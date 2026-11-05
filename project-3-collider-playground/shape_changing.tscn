@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://jvbnvsmmmpao"]
+
+[ext_resource type="Script" uid="uid://d31w752s2fuer" path="res://shape_changing.gd" id="1_aqmlt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mduua"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_72smb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_aqmlt"]
+
+[node name="ShapeChanging" type="RigidBody3D" unique_id=445394892]
+physics_material_override = SubResource("PhysicsMaterial_mduua")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_aqmlt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1074250954]
+shape = SubResource("SphereShape3D_72smb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=585738454]
+mesh = SubResource("SphereMesh_aqmlt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

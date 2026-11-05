@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b1r2ltwo4elas"]
+
+[ext_resource type="Script" uid="uid://dnc02projc44u" path="res://color_changing.gd" id="1_vog1b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5gtap"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4gaj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ra2i3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vog1b"]
+
+[node name="ColorChanging" type="RigidBody3D" unique_id=1611087339]
+physics_material_override = SubResource("PhysicsMaterial_5gtap")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_vog1b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1714227027]
+shape = SubResource("SphereShape3D_g4gaj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1431853565]
+mesh = SubResource("SphereMesh_ra2i3")
+surface_material_override/0 = SubResource("StandardMaterial3D_vog1b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
